@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@400;500;700&display=swap');
+
 :root {
     --clr-black: #1c1c1c;
-    --clr-gray: #e0dfdf;
-    --clr-white: #ececec;
-
+    --crl-white: #f2f2f2;
+    --clr-gray: #333333;
+    --clr-low-gray: #989898;
+    --clr-dark: #161616;
+    --clr-low-dark: #272626;
     --type-normal: #A8A878;
     --type-fire: #f08030;
     --type-water: #6890f0;
@@ -28,7 +32,7 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--clr-black);
-
+    font-family: 'Yantramanav', sans-serif;
 }
 
 ul {
@@ -43,12 +47,12 @@ button {
 
 body {
     min-height: 100vh;
-    background-color: var(--clr-gray);
+    background-color: var(--clr-dark);
 }
 
 header {
     padding-block: 1rem;
-    box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, .5);
+    box-shadow: 0 0 2rem -1rem rgba(255, 255, 255, .5);
 
 }
 
@@ -73,12 +77,13 @@ ul {
 
 .btn-header {
     background-color: var(--clr-gray);
-    padding: .5rem;
+    padding: .25rem;
+    padding-inline: 0.5rem;
     border-radius: 100vmax;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 600;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, .25);
+    box-shadow: 0 0 1rem -.2rem rgba(255, 255, 255, .25);
     transition: 0.9;
 }
 
@@ -98,11 +103,10 @@ section {
     gap: 1rem;
 }
 
-
 .pokemon {
     border-radius: 1rem;
-    background-color: var(--clr-white);
-    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .5);
+    background-color: var(--clr-low-dark);
+    box-shadow: 0 0 3rem -1.5rem rgba(255, 255, 255, .25);
     padding-block: 1rem;
     text-transform: uppercase;
     position: relative;
@@ -120,7 +124,7 @@ section {
     left: 50%;
     transform: translatex(-50%);
     font-size: 6rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--clr-gray);
     z-index: -10;
 }
@@ -154,7 +158,7 @@ section {
 }
 
 .pokemon-id {
-    background-color: var(--clr-gray);
+    background-color: var(--clr-low-gray);
     padding: .2rem 0.5rem;
     border-radius: 100vmax;
     font-size: 0.5rem;
@@ -162,41 +166,77 @@ section {
 }
 
 .pokemon-nombre {
+    margin: 0;
     font-size: 1.3rem;
+    padding: 0;
+    text-transform: uppercase;
+    color: var(--clr-low-gray);
 }
 
 .pokemon-tipos {
+    margin: 0;
+    padding: 0.5rem;
     display: flex;
     gap: 0.5rem;
     font-size: .75rem;
-    font-weight: 500;
+    font-weight: 600;
     flex-wrap: wrap;
     justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 .tipo {
+    margin-bottom: auto 0;
     padding: .25rem .5rem;
+    padding-top: .25rem;
     border-radius: 100vmax;
+    text-transform: uppercase;
+
+}
+
+.stat_poke {
+    color: var(--clr-low-gray);
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding-left: 1.1rem;
+    /* color: var(--type-dragon); */
+}
+
+.stat-bar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.stat-bar {
+    width: 30%;
+    height: 10px;
+    background-color: var(--clr-gray);
+    /* margin-right: .1rem; */
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background-color: #3c3cb6;
+    width: 80%;
 }
 
 
-/* @media screen and (min-width: 470px) {
-    .pokemon-todos {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}; */
 
-@media screen and (min-width: 700px) {
-    .pokemon-todos {
-        grid-template-columns: repeat(3, 1fr);
-    }
-};
+/* --------------------------------------------------------- */
+#vertodos {
+    background-color: var(--crl-white);
+}
 
-
-/* ----------------------------------------------------------------------------------------------- */
 .normal {
     background-color: var(--type-normal);
-    color: var(--clr-black);
+    color: var(--clr-);
 }
 
 .fire {
@@ -282,4 +322,10 @@ section {
 .fairy {
     background-color: var(--type-fairy);
     color: var(--clr-black);
+}
+
+@media screen and (min-width: 700px) {
+    .pokemon-todos {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
