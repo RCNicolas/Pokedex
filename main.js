@@ -15,24 +15,26 @@ function mostrarPokemon(poke) {
   `
   );
   tipos = tipos.join("");
+
   let pokeId = poke.id.toString();
+
   if (pokeId.length === 1) {
     pokeId = "00" + pokeId;
   } else if (pokeId.length === 2) {
     pokeId = "0" + pokeId;
   }
+
   const div = document.createElement("div");
   div.classList.add("pokemon");
   let img = poke.sprites.other["official-artwork"].front_default;
   let defaultImg = "Img/Pokeball.png";
+
   div.innerHTML = `
-    <p class="pokemon-id-back">#${pokeId}</p>
-    <div class="pokemon-imagen">
-        <img src="${img ? img : defaultImg}" alt="${poke.name}">
-    </div>
     <div class="pokemon-info">
+      <div class="pokemon-imagen">
+        <img src="${img ? img : defaultImg}" alt="${poke.name}">
+      </div>
         <div class="nombre-contenedor">
-        <p class="pokemon-id">#${pokeId}</p>
         <h2 class="pokemon-nombre">${poke.name}</h2>
         </div>
     </div>
@@ -44,32 +46,40 @@ function mostrarPokemon(poke) {
     let defaultImg = "Img/Pokeball.png";
 
     Swal.fire({
-      title: `<h2 class="pokemon-nombre">${poke.name}</h2>
-                <div class="pokemon-tipos" style="text-align: center;">
-                  ${tipos}
-                </div>`,
-      imageUrl: `${img ? img : defaultImg}`,
-      html: `${poke.stats
-        .map(
-          (data) => `
-              <div class="stat-bar-container">
-                <div class="stat-bar">
-                  <div class="stat-bar-fill" style="width: ${
-                    data.base_stat / 1.5
-                  }%;"></div>
-                </div>
-                <span class="stat_poke">${data.base_stat}: ${
-            data.stat.name
-          }</span>
-              </div><br>
-              `
-        )
-        .join("")}`,
-      imageWidth: "75%",
-      imageHeight: "75%",
-      width: "24rem",
-      height: "10rem",
-      background: "#252525",
+      html: /*html*/ `
+      <div class="contenedor-swal"> 
+        <div class="cont-imagen-Swal">
+          <img class="imagen-Swal" 
+            src="${img ? img : defaultImg}" 
+            alt="${poke.name}">
+        </div>
+        <p class="pokemon-id">#${pokeId}</p> 
+        <p class="nombre-alert">${poke.name}</p>
+        <div class="tipos-alert" style="text-align: center;">
+          ${tipos}
+        </div>
+        <div class="pokeStat">${poke.stats
+          .map(
+            (data) => /*html */ `
+          <div class="stat-bar-container">
+            <div class="stat-bar">
+              <div class="stat-bar-fill" style="width: ${
+                data.base_stat / 2
+              }%;">
+              </div>
+            </div>
+            <span class="stat_poke">
+              <b class="base_stat">${data.base_stat}</b> <b class="name_stat">${
+              data.stat.name
+            }</b>
+            </span>
+          </div>`
+          )
+          .join("")}</div>
+      </div>`,
+      width: "auto",
+      height: "auto",
+      background: "transparent",
       padding: "0rem",
       margin: "0rem",
       // grow: "column",

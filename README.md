@@ -2,6 +2,8 @@
 
 ![Captura de Pantalla](Img/Captura_de_pantalla.png)
 
+![Captura de Pantalla](./Img/Captura_alerta.png)
+
 La **Pokédex** es una aplicación web que te permite explorar una amplia variedad de Pokémon y obtener información detallada sobre ellos. Con esta aplicación, puedes filtrar los Pokémon por tipo y aprender más sobre sus estadísticas y características únicas. 
 
 ## Características Destacadas
