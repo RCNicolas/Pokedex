@@ -2,13 +2,24 @@ const listaPokemon = document.querySelector("#listaPokemon");
 const URl = "https://pokeapi.co/api/v2/pokemon/";
 const botonesHearder = document.querySelectorAll(".btn-header");
 
-for (let i = 1; i <= 1292; i++) {
+for (let i = 1; i <= 504; i++) {
   fetch(URl + i)
     .then((response) => response.json())
     .then((data) => mostrarPokemon(data));
 }
 
+// const mostrarPokemon = async (URl) => {
+//   let data = await (
+//     await fetch(URl)
+//   ).json();
+//   return data
+// }
+
 function mostrarPokemon(poke) {
+  // let data = await (
+  //   await fetch(URl)
+  // ).json();
+
   let tipos = poke.types.map(
     (type) =>
       `<p class="tipo ${type.type.name}">${type.type.name}</p>
@@ -29,13 +40,14 @@ function mostrarPokemon(poke) {
   let img = poke.sprites.other["official-artwork"].front_default;
   let defaultImg = "Img/Pokeball.png";
 
-  div.innerHTML = `
+  div.innerHTML = /*html */ `
     <div class="pokemon-info">
       <div class="pokemon-imagen">
         <img src="${img ? img : defaultImg}" alt="${poke.name}">
       </div>
         <div class="nombre-contenedor">
         <h2 class="pokemon-nombre">${poke.name}</h2>
+        <h2 class="exp"> EXP ${poke.base_experience}</h2>
         </div>
     </div>
   `;
@@ -63,9 +75,7 @@ function mostrarPokemon(poke) {
             (data) => /*html */ `
           <div class="stat-bar-container">
             <div class="stat-bar">
-              <div class="stat-bar-fill" style="width: ${
-                data.base_stat / 2
-              }%;">
+              <div class="stat-bar-fill" style="width: ${data.base_stat / 2}%;">
               </div>
             </div>
             <span class="stat_poke">
@@ -92,7 +102,7 @@ botonesHearder.forEach((boton) =>
   boton.addEventListener("click", (event) => {
     const botonId = event.currentTarget.id;
     listaPokemon.innerHTML = "";
-    for (let i = 1; i <= 1292; i++) {
+    for (let i = 1; i <= 200; i++) {
       fetch(URl + i)
         .then((response) => response.json())
         .then((data) => {
