@@ -45,7 +45,7 @@ Sigue estos pasos para configurar la Pokédex Pokémon en tu entorno local:
 
  **PokéAPI**: Los datos de los Pokémon se obtienen de la [PokéAPI](https://pokeapi.co/), una fuente confiable para información relacionada con Pokémon.
 
-**MockApi**: Los datos editados se envian a la API de [MockApi](https://6509d051f6553137159c10d2.mockapi.io/PokemonAPI)
+**MockApi**: Los datos editados se envian a la [API](https://6509d051f6553137159c10d2.mockapi.io/PokemonAPI) de [MockApi](https://mockapi.io)
 ***
 
 Este proyecto fue creado por [Nicolas Ruiz](https://github.com/RCNicolas). Si tienes alguna pregunta o sugerencia sobre la aplicación, no dudes en ponerte en contacto conmigo.
