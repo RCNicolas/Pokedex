@@ -34,6 +34,7 @@
     box-sizing: border-box;
     color: var(--clr-black);
     font-family: 'Yantramanav', sans-serif;
+    font-size: 15px;
 }
 
 
@@ -106,6 +107,38 @@ section {
     margin: 0 auto;
 }
 
+.contenedor-id-limite-input {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+}
+
+#limit,
+#offset {
+    width: 15rem;
+    padding: 0.5rem;
+    border: 1px solid var(--clr-low-gray);
+    border-radius: 1rem;
+    text-align: left;
+    background-color: var(--clr-low-gray);
+    color: var(--clr-black);
+    margin: 1rem 0;
+}
+
+
+#mostrarPokemon,
+#cargarTodos {
+    background-color: var(--clr-low-dark);
+    color: var(--clr-low-gray);
+    border: none;
+    border-radius: 1rem;
+    padding: .5rem .75rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
 .pokedex {
     text-align: center;
 }
@@ -176,7 +209,7 @@ section {
     border-radius: 1.2rem;
     /* height: 100%; */
     width: 100%;
-    max-width: 26rem;
+    max-width: 35rem;
 }
 
 .nombre-contenedor {
@@ -309,15 +342,24 @@ section {
     font-size: 0.9rem;
     font-weight: 600;
     padding-left: 1.5rem;
-    /* color: var(--type-dragon); */
 }
 
 .pokeStat {
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding-left: 2.35rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+label,
+b {
+    color: var(--clr-low-gray);
+}
+
+[type="submit"] {
+    color: #161616;
+    border-color: var(--clr-gray);
+    margin: .5rem;
 }
 
 .stat-bar-container {
@@ -325,18 +367,16 @@ section {
     align-items: center;
     justify-content: left;
     padding-left: 2.8rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     padding: 0;
     margin: 0;
 }
 
 .stat-bar {
-    width: 30%;
-    height: 10px;
-    background-color: var(--clr-gray);
-    margin-right: .1rem;
+    padding-left: 1rem;
 }
 
+/*
 .stat-bar-fill {
     height: 100%;
     background-color: var(--clr-low-gray);
@@ -346,7 +386,6 @@ section {
 .base_stat {
     color: var(--crl-purple);
     font-weight: 700;
-    /* padding-right: %; */
     margin: 0;
 }
 
@@ -355,7 +394,7 @@ section {
     color: var(--clr-low-gray);
     padding-left: .5rem;
 
-}
+} */
 
 /* --------------------------------------------------------- */
 #Todos {
@@ -465,12 +504,20 @@ section {
 }
 
 @media (max-width: 720px) {
+    body {
+        font-size: 10px;
+    }
+
     .pokemon-todos {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 470px) {
+    body {
+        font-size: 8px;
+    }
+
     .pokemon-todos {
         grid-template-columns: repeat(1, 1fr);
     }

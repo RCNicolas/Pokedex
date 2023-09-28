@@ -4,52 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon</title>
+    <title>Pokémon API</title>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui@4/material-ui.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer type="module"></script>
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
+    <div class="pokedex">
+        <img src="Img/Pokédex_logo.png" alt="">
+    </div>
 
-    <header>
-        <nav class="nav-list">
-            <img src="" alt="">
-            <ul>
-                <li class="nav-item"><button class="btn btn-header" id="Todos">Todos</button></li>
-                <li class="nav-item"><button class="btn btn-header normal" id="normal">normal</button></li>
-                <li class="nav-item"><button class="btn btn-header fire" id="fire">fire</button></li>
-                <li class="nav-item"><button class="btn btn-header water" id="water">water</button></li>
-                <li class="nav-item"><button class="btn btn-header grass" id="grass">grass</button></li>
-                <li class="nav-item"><button class="btn btn-header electric" id="electric">electric</button></li>
-                <li class="nav-item"><button class="btn btn-header ice" id="ice">ice</button></li>
-                <li class="nav-item"><button class="btn btn-header fighting" id="fighting">fighting</button></li>
-                <li class="nav-item"><button class="btn btn-header poison" id="poison">poison</button></li>
-                <li class="nav-item"><button class="btn btn-header ground" id="ground">ground</button></li>
-                <li class="nav-item"><button class="btn btn-header flying" id="flying">flying</button></li>
-                <li class="nav-item"><button class="btn btn-header psychic" id="psychic">psychic</button></li>
-                <li class="nav-item"><button class="btn btn-header bug" id="bug">bug</button></li>
-                <li class="nav-item"><button class="btn btn-header rock" id="rock">rock</button></li>
-                <li class="nav-item"><button class="btn btn-header ghost" id="ghost">ghost</button></li>
-                <li class="nav-item"><button class="btn btn-header dark" id="dark">dark</button></li>
-                <li class="nav-item"><button class="btn btn-header dragon" id="dragon">dragon</button></li>
-                <li class="nav-item"><button class="btn btn-header steel" id="steel">steel</button></li>
-                <li class="nav-item"><button class="btn btn-header fairy" id="fairy">fairy</button></li>
+    <div class="contenedor-id-limite-input">
+        <input type="number" id="offset" placeholder="ID del Pokémon a mostrar">
+        <input type="number" id="limit" placeholder="Cantidad de Pokémon a mostrar">
+        <button id="mostrarPokemon">Mostrar Pokémon</button>
+        <button id="cargarTodos">Todos</button>
+    </div>
 
-                
-
-            </ul>
-        </nav>
-    </header>
 
     <section>
-
-        <div class="pokedex">
-            <img src="Img/Pokédex_logo.png" alt="">
-        </div>
         <div id="todos">
             <div class="pokemon-todos" id="listaPokemon">
 
@@ -57,6 +32,7 @@
         </div>
     </section>
 
+    <script src="./js/main.js" type="module" defer> </script>
 </body>
 
 </html>
