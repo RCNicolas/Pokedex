@@ -139,13 +139,17 @@ section {
     font-size: 1.1rem;
 }
 
+.actualizarPoke{
+    color: var(--clr-low-gray);
+}
+
 .pokedex {
     text-align: center;
 }
 
 .pokedex img {
-    width: 12rem;
-    margin-bottom: 2rem;
+    width: 15rem;
+    margin-top: 2rem;
 }
 
 .pokemon-todos {

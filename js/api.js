@@ -1,7 +1,112 @@
 import { request } from "./request.js";
-// import { mostrarTarjetaSwal } from "./swal.js";
 
 const listaPokemon = document.querySelector("#listaPokemon");
+
+// URL de mockApi
+const apiURL = "https://6509d051f6553137159c10d2.mockapi.io/PokemonAPI";
+
+// Función para buscar un Pokémon en la API por nombre
+async function buscarPokemonEnAPI(name) {
+  try {
+    const apiUrl = `${apiURL}?name=${name}`;
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      // Verificar si se encontró un Pokémon con el nombre
+      if (data && data.length > 0) {
+        return {
+          idPokemon: data[0].idPokemon,
+          name: data[0].name,
+        };
+      } else {
+        // Si no se encontró ningún Pokémon con ese nombre, retorna false
+        return false;
+      }
+    } else {
+      console.error("Error al buscar el Pokémon en la API.");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error al buscar el Pokémon en la API:", error);
+    return false;
+  }
+}
+
+// Función para crear o actualizar un Pokémon en la mockApi
+async function createOrUpdatePokemon(poke) {
+  try {
+    const existingPokemon = await buscarPokemonEnAPI(poke.name);
+
+    if (existingPokemon) {
+      // Si el Pokémon ya existe, actualiza los datos usando una solicitud PUT
+      const apiUrl = `${apiURL}/${existingPokemon.idPokemon}`;
+      const putResponse = await fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(poke),
+      });
+
+      if (putResponse.ok) {
+        Swal.fire({
+          icon: "success",
+          html: /*html*/ `<div class="actualizarPoke">
+          Pokémon ${poke.name} actualizado con éxito en la API mock
+          </div>`,
+          showConfirmButton: false,
+          timer: 1500,
+          background: "#161616",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Problema al actualizar los datos",
+          showConfirmButton: false,
+          timer: 1500,
+          background: "#161616",
+        });
+      }
+    } else {
+      // Si el Pokémon no existe, se crea usando la solicitud POST
+      const postResponse = await fetch(apiURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(poke),
+      });
+
+      if (postResponse.ok) {
+        Swal.fire({
+          icon: "success",
+          html: /*html*/ `<div class="actualizarPoke">
+          Pokémon ${poke.name} creado con éxito en la API mock
+          </div>`,
+          showConfirmButton: false,
+          timer: 1500,
+          background: "#161616",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Problema al guardar los datos",
+          showConfirmButton: false,
+          timer: 1500,
+          background: "#161616",
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error al enviar datos:", error);
+  }
+}
 
 export const cargarPokemonPorDefecto = async () => {
   const limit = 102;
@@ -15,9 +120,10 @@ export const cargarPokemonPorDefecto = async () => {
   for (const pokemon of pokemons) {
     const pokemonData = await request(pokemon.url);
 
-    // Asegúrate de que pokemonData tenga la propiedad 'sprites'
     if (!pokemonData.sprites) {
-      pokemonData.sprites = { other: { "official-artwork": { front_default: "" } } };
+      pokemonData.sprites = {
+        other: { "official-artwork": { front_default: "" } },
+      };
     }
 
     mostrarPokemon(pokemonData);
@@ -57,8 +163,7 @@ export const mostrarPokemon = async (poke) => {
     `;
   // Agregar el elemento a la lista de Pokémon
   listaPokemon.append(div);
-  // Creo el evento de dar clik al div que contiene el pokemon para mostar la tarjeta
-  // mostrarTarjetaSwal(poke);
+
   div.addEventListener("click", async () => {
     let img = poke.sprites.other["official-artwork"].front_default;
     let defaultImg = "../Img/Pokeball.png";
@@ -107,21 +212,21 @@ export const mostrarPokemon = async (poke) => {
       showConfirmButton: false,
     });
 
-    // Agrega el evento al formulario
-    let contenedorHtml = document.querySelector(".pokeStat");
+    const contenedorHtml = document.querySelector(".pokeStat");
+
     contenedorHtml
       .querySelector("form")
       .addEventListener("submit", async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
 
-        // Obtén los valores de las estadísticas editadas
+        // Obtener los valores de las estadísticas editadas
         const statsData = poke.stats.map((stat) => ({
           stat: { name: stat.stat.name },
           base_stat: parseInt(formData.get(stat.stat.name)),
         }));
 
-        // Crea un objeto con la misma estructura que la API de Pokémon
+        // Crear un objeto con la misma estructura que la pokeApi para guardarlo en la mockApi
         const editedPokemonData = {
           idPokemon: poke.id,
           name: poke.name,
@@ -138,38 +243,8 @@ export const mostrarPokemon = async (poke) => {
           stats: statsData,
         };
 
-        // Aquí debes hacer una solicitud POST a tu API para guardar los datos
-        const apiUrl = "https://6509d051f6553137159c10d2.mockapi.io/PokemonAPI"; // Reemplaza con la URL de tu API
-        try {
-          const response = await fetch(apiUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(editedPokemonData), // Envía los datos en formato JSON
-          });
-
-          if (response.ok) {
-            Swal.fire({
-              icon: "success",
-              title: "Datos guardados correctamente",
-              showConfirmButton: false,
-              timer: 1500,
-              background: "#161616",
-            });
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Problema al guardar los datos",
-              showConfirmButton: false,
-              timer: 1500,
-              background: "#161616",
-            });
-          }
-        } catch (error) {
-          console.error("Error al enviar datos:", error);
-          Swal.fire("Error", "Hubo un problema al guardar los datos", "error");
-        }
+        // Llama a la función para crear o actualizar el Pokémon
+        createOrUpdatePokemon(editedPokemonData);
       });
 
     contenedorHtml.addEventListener("input", (e) => {
