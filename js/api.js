@@ -64,6 +64,9 @@ async function createOrUpdatePokemon(poke) {
           timer: 1500,
           background: "#161616",
         });
+
+        // Después de actualizar el Pokémon, vuelve a cargar todos los Pokémon
+        cargarPokemonPorDefecto();
       } else {
         Swal.fire({
           icon: "error",
@@ -93,6 +96,9 @@ async function createOrUpdatePokemon(poke) {
           timer: 1500,
           background: "#161616",
         });
+
+        // Después de crear el Pokémon, vuelve a cargar todos los Pokémon
+        cargarPokemonPorDefecto();
       } else {
         Swal.fire({
           icon: "error",
@@ -108,25 +114,66 @@ async function createOrUpdatePokemon(poke) {
   }
 }
 
+
 export const cargarPokemonPorDefecto = async () => {
-  const limit = 102;
+  const limit = 18;
+
+  // Obtener todos los Pokémon de mockapki
+  const responsePersonalizada = await fetch(apiURL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  let pokemonsPersonalizados = [];
+  if (responsePersonalizada.ok) {
+    pokemonsPersonalizados = await responsePersonalizada.json();
+  }
+
+  // Obtener los Pokémon de PokeAPI
   const data = await request(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
   );
-  const pokemons = data.results;
+  const pokemonsPokeAPI = data.results;
+
+  // Crear una lista combinada de todos los Pokémon
+  const allPokemons = [];
+
+  // Agregar Pokémon de mockapi
+  for (const pokePersonalizado of pokemonsPersonalizados) {
+    allPokemons.push(pokePersonalizado);
+  }
+
+  // Agregar Pokémon de PokeAPI si no están en la lista
+  for (const pokePokeAPI of pokemonsPokeAPI) {
+    const pokemonName = pokePokeAPI.name;
+    const existeEnPersonalizada = pokemonsPersonalizados.some(
+      (poke) => poke.name === pokemonName
+    );
+
+    if (!existeEnPersonalizada) {
+      allPokemons.push({
+        idPokemon: null, 
+        name: pokemonName,
+      });
+    }
+  }
+
+  // Iterar a través de la lista de todos los Pokémon y mostrarlos o agregarlos
   listaPokemon.innerHTML = "";
 
-  // Iterar a través de la lista de Pokémon y mostrarlos
-  for (const pokemon of pokemons) {
-    const pokemonData = await request(pokemon.url);
-
-    if (!pokemonData.sprites) {
-      pokemonData.sprites = {
-        other: { "official-artwork": { front_default: "" } },
-      };
+  for (const pokemon of allPokemons) {
+    if (pokemon.idPokemon) {
+      // Si el Pokémon tiene un ID personalizado, se muestra
+      mostrarPokemon(pokemon);
+    } else {
+      // Si el Pokémon no tiene un ID personalizado,se obtine los datos de PokeAPI
+      const pokeDataPokeAPI = await request(
+        `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+      );
+      mostrarPokemon(pokeDataPokeAPI);
     }
-
-    mostrarPokemon(pokemonData);
   }
 };
 

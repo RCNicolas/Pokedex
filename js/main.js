@@ -1,4 +1,4 @@
-import { cargarPokemonPorDefecto, mostrarPokemon } from "./api.js";
+import {cargarPokemonPorDefecto, mostrarPokemon } from "./api.js";
 import { request } from "./request.js";
 
 document.addEventListener("DOMContentLoaded", cargarPokemonPorDefecto);
