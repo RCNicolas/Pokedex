@@ -39,6 +39,7 @@ async function buscarPokemonEnAPI(name) {
 }
 
 // Función para crear o actualizar un Pokémon en la mockApi
+
 async function createOrUpdatePokemon(poke) {
   try {
     const existingPokemon = await buscarPokemonEnAPI(poke.name);
@@ -65,8 +66,16 @@ async function createOrUpdatePokemon(poke) {
           background: "#161616",
         });
 
-        // Después de actualizar el Pokémon, vuelve a cargar todos los Pokémon
-        cargarPokemonPorDefecto();
+        // Obtener el índice del Pokémon en la lista de mostrados
+        const index = Array.from(listaPokemon.children).findIndex(
+          (element) => element.querySelector(".pokemon-nombre").textContent === poke.name
+        );
+
+        // Reemplazar el Pokémon en la lista con los datos actualizados
+        if (index !== -1) {
+          listaPokemon.children[index].remove();
+          mostrarPokemon(poke);
+        }
       } else {
         Swal.fire({
           icon: "error",
@@ -114,9 +123,8 @@ async function createOrUpdatePokemon(poke) {
   }
 }
 
-
 export const cargarPokemonPorDefecto = async () => {
-  const limit = 18;
+  const limit = 300;
 
   // Obtener todos los Pokémon de mockapki
   const responsePersonalizada = await fetch(apiURL, {
