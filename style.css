@@ -139,7 +139,33 @@ section {
     font-size: 1.1rem;
 }
 
-.actualizarPoke{
+input[type="range"] {
+    background: var(--clr-gray);
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--crl-purple);
+    cursor: pointer; 
+}
+
+[type="submit"] {
+    background-color: var(--clr-low-gray);
+    border: none; 
+    border-radius: 1rem; 
+    padding: 0.30rem 0.7rem; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: 0.3s; 
+  }
+  
+  [type="submit"]:hover {
+    background-color: var(--crl-white); 
+    transform: scale(1.02); 
+  }
+  
+.actualizarPoke {
     color: var(--clr-low-gray);
 }
 
