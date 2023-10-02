@@ -1,0 +1,205 @@
+{
+  "pokemon": [
+    {
+      "idPokemon": 1,
+      "name": "bulbasaur",
+      "base_experience": 64,
+      "types": [
+        {
+          "slot": 1,
+          "type": {
+            "name": "grass",
+            "url": "https://pokeapi.co/api/v2/type/12/"
+          }
+        },
+        {
+          "slot": 2,
+          "type": {
+            "name": "poison",
+            "url": "https://pokeapi.co/api/v2/type/4/"
+          }
+        }
+      ],
+      "sprites": {
+        "other": {
+          "official-artwork": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+          }
+        }
+      },
+      "stats": [
+        {
+          "stat": {
+            "name": "hp"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "attack"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "defense"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "special-attack"
+          },
+          "base_stat": 65
+        },
+        {
+          "stat": {
+            "name": "special-defense"
+          },
+          "base_stat": 65
+        },
+        {
+          "stat": {
+            "name": "speed"
+          },
+          "base_stat": 45
+        }
+      ],
+      "id": 1
+    },
+    {
+      "idPokemon": 2,
+      "name": "ivysaur",
+      "base_experience": 142,
+      "types": [
+        {
+          "slot": 1,
+          "type": {
+            "name": "grass",
+            "url": "https://pokeapi.co/api/v2/type/12/"
+          }
+        },
+        {
+          "slot": 2,
+          "type": {
+            "name": "poison",
+            "url": "https://pokeapi.co/api/v2/type/4/"
+          }
+        }
+      ],
+      "sprites": {
+        "other": {
+          "official-artwork": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+          }
+        }
+      },
+      "stats": [
+        {
+          "stat": {
+            "name": "hp"
+          },
+          "base_stat": 60
+        },
+        {
+          "stat": {
+            "name": "attack"
+          },
+          "base_stat": 62
+        },
+        {
+          "stat": {
+            "name": "defense"
+          },
+          "base_stat": 63
+        },
+        {
+          "stat": {
+            "name": "special-attack"
+          },
+          "base_stat": 0
+        },
+        {
+          "stat": {
+            "name": "special-defense"
+          },
+          "base_stat": 0
+        },
+        {
+          "stat": {
+            "name": "speed"
+          },
+          "base_stat": 0
+        }
+      ],
+      "id": 2
+    },
+    {
+      "idPokemon": 6,
+      "name": "charizard",
+      "base_experience": 267,
+      "types": [
+        {
+          "slot": 1,
+          "type": {
+            "name": "fire",
+            "url": "https://pokeapi.co/api/v2/type/10/"
+          }
+        },
+        {
+          "slot": 2,
+          "type": {
+            "name": "flying",
+            "url": "https://pokeapi.co/api/v2/type/3/"
+          }
+        }
+      ],
+      "sprites": {
+        "other": {
+          "official-artwork": {
+            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+          }
+        }
+      },
+      "stats": [
+        {
+          "stat": {
+            "name": "hp"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "attack"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "defense"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "special-attack"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "special-defense"
+          },
+          "base_stat": 260
+        },
+        {
+          "stat": {
+            "name": "speed"
+          },
+          "base_stat": 260
+        }
+      ],
+      "id": 3
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { request } from "./request.js";
 const listaPokemon = document.querySelector("#listaPokemon");
 
 // URL de mockApi
-const apiURL = "https://6509d051f6553137159c10d2.mockapi.io/PokemonAPI";
+const apiURL = "  http://localhost:3000/pokemon";
 
 // Función para buscar un Pokémon en la API por nombre
 async function buscarPokemonEnAPI(name) {
@@ -59,7 +59,7 @@ async function createOrUpdatePokemon(poke) {
         Swal.fire({
           icon: "success",
           html: /*html*/ `<div class="actualizarPoke">
-          Pokémon ${poke.name} actualizado con éxito en la API mock
+          Pokémon ${poke.name} actualizado con éxito en la API mockAPI
           </div>`,
           showConfirmButton: false,
           timer: 1500,
@@ -99,7 +99,7 @@ async function createOrUpdatePokemon(poke) {
         Swal.fire({
           icon: "success",
           html: /*html*/ `<div class="actualizarPoke">
-          Pokémon ${poke.name} creado con éxito en la API mock
+          Pokémon ${poke.name} creado con éxito en la API mockAPI
           </div>`,
           showConfirmButton: false,
           timer: 1500,
